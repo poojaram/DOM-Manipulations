@@ -33,12 +33,12 @@ describe('Supports User Events', () => {
     let taskA = {id:1, description:'Test (completed)', complete:true};
     let taskB = {id:1, description:'Test (incompleted)', complete:false};
 
-    let listItemA = $(solution.renderTaskItem(taskA));
+    let listItemA = $(solution.createTaskItemElement(taskA));
     expect(listItemA.prop('tagName').toLowerCase()).toEqual('li'); //is li
     expect(listItemA.text()).toEqual(taskA.description); //has description
     expect(listItemA.hasClass('font-strike')).toBe(true); //crossed out
 
-    let listItemB = $(solution.renderTaskItem(taskB));
+    let listItemB = $(solution.createTaskItemElement(taskB));
     expect(listItemB.hasClass('font-strike')).toBe(false); //not crossed out
   })
 

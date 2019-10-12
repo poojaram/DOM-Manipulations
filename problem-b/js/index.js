@@ -13,7 +13,7 @@ let state = {
 
 /* Your code goes here! */
 
-//Define a function `renderTaskItem()` that takes as an argument an object 
+//Define a function `createTaskItemElement()` that takes as an argument an object 
 //representing a task to do (such as one found in the `state.taskList` array) 
 //and *returns* a list item (<li>) representing that task.
 //The list item should have content that is the `description` of the task, and 
@@ -27,7 +27,7 @@ let state = {
 
 //Define a function `renderTaskList()` that will fill in the provided <ol> with 
 //list items (<li>) representing each task in the `state.taskList`. Call your
-//`renderTaskItem()` function to create each <li> element.
+//`createTaskItemElement()` function to create each <li> element.
 //Make sure your function removes any previous list content so that only the 
 //current task list is shown after this render call!
 
@@ -81,7 +81,7 @@ let state = {
 
 
 
-//Finally, modify the `renderTaskItem()` function so that each list item that 
+//Finally, modify the `createTaskItemElement()` function so that each list item that 
 //is created is registered with a `'click'` event listener. This listener should 
 //have an anonymous callback function that "toggles" the task's `completed` 
 //property (swaps it from true to false and vice-versa), and then calls 
@@ -109,6 +109,6 @@ let state = {
 //Make functions and variables available to tester. DO NOT MODIFY THIS.
 if(typeof module !== 'undefined' && module.exports){
   /* eslint-disable */
-  if(typeof renderTaskItem !== 'undefined') 
-    module.exports.renderTaskItem = renderTaskItem;
+  if(typeof createTaskItemElement !== 'undefined') 
+    module.exports.createTaskItemElement = createTaskItemElement;
 }
