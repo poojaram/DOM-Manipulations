@@ -14,17 +14,24 @@ const COLORS_9 = {
 
 //Create a variable `h1` that refers to the `<h1>` element in the DOM.
 
+let h1Elem = document.querySelector('h1');
 
 //Change the `textContent` of the `<h1>` element to be "Which Swatch?"
 
+h1Elem.textContent = "Which Swatch?";
 
 //Somehow the rainbow icon image was included without an alt tag! Set its `alt`
 //attribute to be "A beautiful rainbow".
 
+let rainbowElem = document.querySelector('img');
+rainbowElem.alt = "A beautiful rainbow";
 
 //Give the image the Bootstrap-provided `float-right` CSS class to make it float
 //to the right of the screen
 
+let rainbowElemClassList = rainbowElem.classList;
+rainbowElemClassList += '' + 'float-right';
+rainbowElem.classList = rainbowElemClassList;
 
 //The icon requires attribution, which is included in the footer. Wrap this
 //attribution (the entire contents of the footer) inside a `<small>` element,
@@ -32,6 +39,9 @@ const COLORS_9 = {
 //current content.
 //Be careful to preserve the HTML!
 
+let footerElem = document.querySelector('footer');
+let footerContent = footerElem.innerHTML;
+footerElem.innerHTML = "<small>" + footerContent + "</small>";
 
 //Define a function `createColorBox()` that takes in two parameters: a color 
 //string and a numeric size. The function should return a _new_ `<div>` element 
@@ -42,6 +52,14 @@ const COLORS_9 = {
 //   passed in size (in `px`)
 //You can test this function by logging out the returned value.
 
+function createColorBox(color, size) {
+    let finalDiv = document.createElement('div');
+    finalDiv.classList += 'd-inline-block';
+    finalDiv.style.backgroundColor = color;
+    finalDiv.style.width = size.toString() + 'px';
+    finalDiv.style.height = size.toString() + 'px';
+    return finalDiv;
+}
 
 
 //Define a function `renderPalette()` that takes in an array of color strings
@@ -58,7 +76,15 @@ const COLORS_9 = {
 //
 //Note that you should NOT include this test call for the tester!
 
-
+function renderPalette(arrayStrings, parent)
+{
+  let length = arrayStrings.length
+  let pWidth = parent.getBoundingClientRect()
+  for (let i = 0; i < length; i++)
+  {
+    parent.appendChild(createColorBox(arrayStrings[i], 1 / pWidth))
+  }
+}
 
 //Define a function `renderPaletteTable()` that will render a color palette row
 //for each of the palettes in the `COLORS_9` object into the <main> element.
@@ -68,7 +94,16 @@ const COLORS_9 = {
 //
 //Call your `renderPaletteTable()` method to show all the color palettes.
 
+function renderPaletteTable()
+{
+  let main = document.getElementsByTagName('main')[0]
+  let key = Object.keys(COLORS_9);
+  for (let i = 0; i < key.length; i++) {
+    renderPalette(COLORS_9[(key[i])], main);
+  }
+}
 
+renderPaletteTable();
 
 //Finally, remove the paragraph that explains how to complete the problem
 
