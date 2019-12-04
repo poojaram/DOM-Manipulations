@@ -80,8 +80,7 @@ function renderPalette(arrayStrings, parent)
 {
   let length = arrayStrings.length
   let pWidth = parent.getBoundingClientRect()
-  for (let i = 0; i < length; i++)
-  {
+  for (let i = 0; i < length; i++){
     parent.appendChild(createColorBox(arrayStrings[i], 1 / pWidth))
   }
 }
